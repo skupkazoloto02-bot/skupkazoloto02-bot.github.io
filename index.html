@@ -265,7 +265,7 @@ document.getElementById('copy-btn').addEventListener('click', function(){
   function fmt(v){var n=parseInt(String(v).replace(/[^0-9]/g,''),10);return isNaN(n)||!n?'':n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ')+' ₸'}
   function render(d){
     var groups={},order=[];
-    d.head.forEach(function(h,i){var p=String(h).trim().split(/\s+/);var pr=p[0];if(!/^[0-9]+$/.test(pr)||pr==='910')return;var ty=p.slice(1).join(' ');var v=fmt(d.vals[i]);if(!v)return;if(!groups[pr]){groups[pr]=[];order.push(pr)}groups[pr].push([ty,v])});
+    d.head.forEach(function(h,i){var p=String(h).trim().split(/\s+/);var pr=p[0];if(!/^[0-9]+$/.test(pr)||pr==='910')return;var ty=p.slice(1).join(' ');var v=fmt(d.vals[i]);if(!v)return;if(!groups[pr]){groups[pr]=[];order.push(pr)}groups[pr].push([pr==='999'?'':ty,v])});
     if(!order.length)return;
     document.getElementById('price-grid').innerHTML=order.map(function(pr){return '<div class="pcard"><div class="probe">'+esc(pr)+' проба</div>'+groups[pr].map(function(r){if(!r[0])return '<div class="prow solo"><b>'+r[1]+'</b></div>';var t=r[0].charAt(0).toUpperCase()+r[0].slice(1);return '<div class="prow"><span>'+esc(t)+'</span><b>'+r[1]+'</b></div>'}).join('')+'</div>'}).join('');
     document.getElementById('price-date').textContent='Цены на '+d.date+'. Точную сумму назовём после оценки при вас.';
