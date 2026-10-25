@@ -260,7 +260,7 @@ document.getElementById('copy-btn').addEventListener('click', function(){
 <script>
 (function(){
   var SHEET='https://docs.google.com/spreadsheets/d/1IzHdmBBFr2FHmbUj8cjP36fOMKgx93hUDFs3-mcvZVo/gviz/tq?tqx=out:csv&headers=1&gid=0';
-  var fallback={date:'23.10.2026',head:['585 изделие','585 лом','750 изделие','750 лом','999'],vals:['31700','29700','40000','38000','50700']};
+  var fallback={date:'25.10.2026',head:['585 изделие','585 лом','750 изделие','750 лом','999'],vals:['31800','29800','40200','38200','50800']};
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   function fmt(v){var n=parseInt(String(v).replace(/[^0-9]/g,''),10);return isNaN(n)||!n?'':n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ')+' ₸'}
   function render(d){
