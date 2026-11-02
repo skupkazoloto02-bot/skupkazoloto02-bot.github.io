@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://skupkazoloto02-bot.github.io/sitemap.xml
