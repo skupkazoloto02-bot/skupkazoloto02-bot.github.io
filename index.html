@@ -369,16 +369,16 @@ document.getElementById('copy-btn').addEventListener('click', function(){
 
 <script>
 (function(){
-  var SHEET='https://docs.google.com/spreadsheets/d/1IzHdmBBFr2FHmbUj8cjP36fOMKgx93hUDFs3-mcvZVo/gviz/tq?tqx=out:csv&headers=1&gid=0';
+  var SHEET='https://docs.google.com/spreadsheets/d/e/2PACX-1vQpdJHfU33nDp6OAZuPI79jzwnQ2v9_IxktRNEzVolOvaIo4pFCcafwkZtsri5AYVqDQpn0j8POXmG9/pub?gid=1813527192&single=true&output=csv';
   function stale(s){var m=String(s).trim().match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/);return !!m&&Date.now()-new Date(+m[3],+m[2]-1,+m[1]).getTime()>2*864e5}
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   function fmt(v){var n=parseInt(String(v).replace(/[^0-9]/g,''),10);return isNaN(n)||!n?'':n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ')+' ₸'}
   function render(d){
     var groups={},order=[];
-    d.head.forEach(function(h,i){var p=String(h).trim().split(/\s+/);var pr=p[0];if(!/^[0-9]+$/.test(pr)||pr==='910')return;var ty=p.slice(1).join(' ');var v=fmt(d.vals[i]);if(!v)return;if(!groups[pr]){groups[pr]=[];order.push(pr)}groups[pr].push([pr==='999'?'':ty,v])});
+    d.head.forEach(function(h,i){var p=String(h).trim().split(/\s+/);var pr=p[0];if(!/^[0-9]+$/.test(pr)||pr==='910')return;var ty=p.slice(1).join(' ');if(/^изд/i.test(ty))ty='изделие';var v=fmt(d.vals[i]);if(!v)return;if(!groups[pr]){groups[pr]=[];order.push(pr)}groups[pr].push([pr==='999'?'':ty,v])});
     if(!order.length)return;
-    document.getElementById('price-grid').innerHTML=order.map(function(pr){return '<div class="pcard"><div class="probe">'+esc(pr)+' проба</div>'+groups[pr].map(function(r){if(!r[0])return '<div class="prow solo"><b>'+r[1]+'</b></div>';var t=r[0].charAt(0).toUpperCase()+r[0].slice(1);return '<div class="prow"><span>'+esc(t)+'</span><b>'+r[1]+'</b></div>'}).join('')+'</div>'}).join('');
-    document.getElementById('price-date').textContent='Цены на '+d.date+'. '+(stale(d.date)?'Цена меняется каждый день, актуальную уточните в WhatsApp. ':'')+'Точную сумму назовём после оценки при вас.';
+    document.getElementById('price-grid').innerHTML=order.map(function(pr){groups[pr].sort(function(a,b){return a[0]<b[0]?-1:1});return '<div class="pcard"><div class="probe">'+esc(pr)+' проба</div>'+groups[pr].map(function(r){if(!r[0])return '<div class="prow solo"><b>'+r[1]+'</b></div>';var t=r[0].charAt(0).toUpperCase()+r[0].slice(1);return '<div class="prow"><span>'+esc(t)+'</span><b>'+r[1]+'</b></div>'}).join('')+'</div>'}).join('');
+    document.getElementById('price-date').textContent='Цены на '+String(d.date).trim().replace(/^(\d)\./,'0$1.')+'. '+(stale(d.date)?'Цена меняется каждый день, актуальную уточните в WhatsApp. ':'')+'Точную сумму назовём после оценки при вас.';
   }
   function parse(t){return t.trim().split(/\r?\n/).map(function(l){var out=[],cur='',q=false;for(var i=0;i<l.length;i++){var c=l[i];if(q){if(c=='"'&&l[i+1]=='"'){cur+='"';i++}else if(c=='"'){q=false}else{cur+=c}}else if(c=='"'){q=true}else if(c==','){out.push(cur);cur=''}else{cur+=c}}out.push(cur);return out})}
   fetch(SHEET+'&t='+Date.now()).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){
