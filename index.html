@@ -94,7 +94,7 @@ header .btn{min-height:44px;padding:10px 18px;font-size:14px;border-radius:12px}
 .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:#E9E3D3;padding:5px;border-radius:14px}
 .seg.four{grid-template-columns:repeat(4,1fr)}
 .map{display:block;width:100%;border:0;border-radius:18px;background:var(--panel);aspect-ratio:16/10;max-width:100%}
-.way .map{margin:0 0 18px}
+.way .map{margin:0 0 18px;aspect-ratio:auto;height:340px}
 .where{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:16px;margin-top:20px}
 .where figure{margin:0;background:var(--bg-2);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
 .where img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
@@ -390,13 +390,13 @@ footer .legal{max-width:60em}
           <table>
             <thead><tr><th>Проба</th><th>Цена за 1 г</th></tr></thead>
             <tbody id="ptable">
-              <tr><td><span class="probe-tag">999</span>проба</td><td class="p">49 500 ₸</td></tr>
-              <tr><td><span class="probe-tag">750</span>проба</td><td class="p">37 100 ₸</td></tr>
-              <tr><td><span class="probe-tag">585</span>проба</td><td class="p">29 000 ₸</td></tr>
-              <tr><td><span class="probe-tag">375</span>проба</td><td class="p">18 500 ₸</td></tr>
+              <tr><td><span class="probe-tag">999</span>проба</td><td class="p">47 500 ₸</td></tr>
+              <tr><td><span class="probe-tag">750</span>проба</td><td class="p">35 000 ₸</td></tr>
+              <tr><td><span class="probe-tag">585</span>проба</td><td class="p">28 000 ₸</td></tr>
+              <tr><td><span class="probe-tag">375</span>проба</td><td class="p">16 000 ₸</td></tr>
             </tbody>
           </table>
-          <p class="pdate" id="price-date">Цены на 02.11.2026. Точную сумму назовём после оценки при вас.</p>
+          <p class="pdate" id="price-date">Цены на 20.11.2026. Точную сумму назовём после оценки при вас.</p>
         </div>
         <div class="facts">
           <div class="fact">
@@ -478,7 +478,7 @@ footer .legal{max-width:60em}
             <li><div><b>Называем сумму</b><span>Решение остаётся за вами, без давления.</span></div></li>
             <li><div><b>Деньги сразу</b><span>Наличными или переводом на карту.</span></div></li>
           </ol>
-          <iframe class="map" src="https://maps.google.com/maps?q=43.227246,76.905896&hl=ru&z=17&output=embed" title="Карта: ул. Ауэзова, 136, Алматы" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe class="map" src="https://widgets.2gis.com/widget?type=firmsonmap&amp;options=%7B%22pos%22%3A%7B%22lat%22%3A43.227246%2C%22lon%22%3A76.905896%2C%22zoom%22%3A17%7D%2C%22opt%22%3A%7B%22city%22%3A%22almaty%22%7D%2C%22org%22%3A%2270000001118349052%22%7D" title="Карта 2ГИС: ул. Ауэзова, 136, Алматы" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           <a class="btn btn-gold" href="https://2gis.kz/almaty/firm/70000001118349052" target="_blank" rel="noopener">Построить маршрут в 2ГИС</a>
         </div>
       </div>
@@ -562,7 +562,7 @@ footer .legal{max-width:60em}
       <div class="where">
         <figure><img src="fasad.webp" width="440" height="551" loading="lazy" alt="Фасад здания на ул. Ауэзова, 136 с вывеской «Алтын сату — Скупка золота»"><figcaption><b>Ищите вывеску «Скупка золота»</b>Над входом в Leilaq Beauty Center, дом 136</figcaption></figure>
         <figure><img src="vnutri.webp" width="360" height="609" loading="lazy" alt="Окно оценки золота внутри скупки"><figcaption><b>Окно оценки</b>Взвешиваем и проверяем пробу при вас</figcaption></figure>
-        <iframe class="map" src="https://maps.google.com/maps?q=43.227246,76.905896&hl=ru&z=17&output=embed" title="Карта: ул. Ауэзова, 136, Алматы" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe class="map" src="https://widgets.2gis.com/widget?type=firmsonmap&amp;options=%7B%22pos%22%3A%7B%22lat%22%3A43.227246%2C%22lon%22%3A76.905896%2C%22zoom%22%3A17%7D%2C%22opt%22%3A%7B%22city%22%3A%22almaty%22%7D%2C%22org%22%3A%2270000001118349052%22%7D" title="Карта 2ГИС: ул. Ауэзова, 136, Алматы" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </section>
@@ -598,7 +598,7 @@ footer .legal{max-width:60em}
 /* Цены и калькулятор */
 (function(){
   var SHEET='https://docs.google.com/spreadsheets/d/e/2PACX-1vQpdJHfU33nDp6OAZuPI79jzwnQ2v9_IxktRNEzVolOvaIo4pFCcafwkZtsri5AYVqDQpn0j8POXmG9/pub?gid=1813527192&single=true&output=csv';
-  var P={date:'02.11.2026','999':49500,'750':37100,'585':29000};
+  var P={date:'20.11.2026','999':47500,'750':35000,'585':28000,'375':16000};
   var ORDER=['999','750','585','375'];
   function fill(p){if(!p['375']&&p['585'])p['375']=Math.floor(p['585']*375/585/100)*100;return p}
   function money(n){return Math.floor(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ')+' ₸'}
