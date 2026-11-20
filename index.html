@@ -94,6 +94,10 @@ header .btn{min-height:44px;padding:10px 18px;font-size:14px;border-radius:12px}
 .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:#E9E3D3;padding:5px;border-radius:14px}
 .seg.four{grid-template-columns:repeat(4,1fr)}
 .map{display:block;width:100%;border:0;border-radius:18px;background:var(--panel);aspect-ratio:16/10;max-width:100%}
+.map{position:relative;overflow:hidden;text-decoration:none}
+.map img{display:block;width:100%;height:100%;object-fit:cover}
+.map-cta{position:absolute;left:12px;bottom:12px;background:var(--gold);color:#13201f;font-weight:800;font-size:14px;padding:8px 14px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.map:hover .map-cta{background:var(--gold-soft)}
 .way .map{margin:0 0 18px;aspect-ratio:auto;height:340px}
 .where{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:16px;margin-top:20px}
 .where figure{margin:0;background:var(--bg-2);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
@@ -478,7 +482,7 @@ footer .legal{max-width:60em}
             <li><div><b>Называем сумму</b><span>Решение остаётся за вами, без давления.</span></div></li>
             <li><div><b>Деньги сразу</b><span>Наличными или переводом на карту.</span></div></li>
           </ol>
-          <iframe class="map" src="https://widgets.2gis.com/widget?type=firmsonmap&amp;options=%7B%22pos%22%3A%7B%22lat%22%3A43.227246%2C%22lon%22%3A76.905896%2C%22zoom%22%3A17%7D%2C%22opt%22%3A%7B%22city%22%3A%22almaty%22%7D%2C%22org%22%3A%2270000001118349052%22%7D" title="Карта 2ГИС: ул. Ауэзова, 136, Алматы" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <a class="map" href="https://2gis.kz/almaty/firm/70000001118349052" target="_blank" rel="noopener" aria-label="Открыть точку на карте 2ГИС"><img src="https://static.maps.2gis.com/1.0?s=800x500&amp;c=43.227246,76.905896&amp;z=17&amp;pt=43.227246,76.905896~k:p~c:rd~s:l" width="800" height="500" loading="lazy" alt="Карта 2ГИС: скупка на ул. Ауэзова, 136"><span class="map-cta">Открыть в 2ГИС</span></a>
           <a class="btn btn-gold" href="https://2gis.kz/almaty/firm/70000001118349052" target="_blank" rel="noopener">Построить маршрут в 2ГИС</a>
         </div>
       </div>
@@ -562,7 +566,7 @@ footer .legal{max-width:60em}
       <div class="where">
         <figure><img src="fasad.webp" width="440" height="551" loading="lazy" alt="Фасад здания на ул. Ауэзова, 136 с вывеской «Алтын сату — Скупка золота»"><figcaption><b>Ищите вывеску «Скупка золота»</b>Над входом в Leilaq Beauty Center, дом 136</figcaption></figure>
         <figure><img src="vnutri.webp" width="360" height="609" loading="lazy" alt="Окно оценки золота внутри скупки"><figcaption><b>Окно оценки</b>Взвешиваем и проверяем пробу при вас</figcaption></figure>
-        <iframe class="map" src="https://widgets.2gis.com/widget?type=firmsonmap&amp;options=%7B%22pos%22%3A%7B%22lat%22%3A43.227246%2C%22lon%22%3A76.905896%2C%22zoom%22%3A17%7D%2C%22opt%22%3A%7B%22city%22%3A%22almaty%22%7D%2C%22org%22%3A%2270000001118349052%22%7D" title="Карта 2ГИС: ул. Ауэзова, 136, Алматы" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <a class="map" href="https://2gis.kz/almaty/firm/70000001118349052" target="_blank" rel="noopener" aria-label="Открыть точку на карте 2ГИС"><img src="https://static.maps.2gis.com/1.0?s=800x500&amp;c=43.227246,76.905896&amp;z=17&amp;pt=43.227246,76.905896~k:p~c:rd~s:l" width="800" height="500" loading="lazy" alt="Карта 2ГИС: скупка на ул. Ауэзова, 136"><span class="map-cta">Открыть в 2ГИС</span></a>
       </div>
     </div>
   </section>
