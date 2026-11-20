@@ -92,7 +92,15 @@ header .btn{min-height:44px;padding:10px 18px;font-size:14px;border-radius:12px}
 .field{display:grid;gap:8px;margin-bottom:16px}
 .field>span{font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:#4E6B68}
 .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:#E9E3D3;padding:5px;border-radius:14px}
-.seg.two{grid-template-columns:1fr 1fr}
+.seg.four{grid-template-columns:repeat(4,1fr)}
+.map{display:block;width:100%;border:0;border-radius:18px;background:var(--panel);aspect-ratio:16/10;max-width:100%}
+.way .map{margin:0 0 18px}
+.where{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:16px;margin-top:20px}
+.where figure{margin:0;background:var(--bg-2);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.where img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.where figcaption{padding:14px 16px;font-size:14px;color:var(--muted)}
+.where figcaption b{display:block;color:var(--ink);font-size:15px}
+.where .map{aspect-ratio:auto;height:100%;min-height:320px;border-radius:22px}
 .seg input{position:absolute;opacity:0;pointer-events:none}
 .seg label{display:grid;place-items:center;min-height:44px;border-radius:10px;font-weight:800;cursor:pointer;color:#35514E;text-align:center;font-size:15px}
 .seg input:checked+label{background:var(--bg);color:var(--gold);box-shadow:0 4px 10px rgba(6,43,42,.25)}
@@ -202,6 +210,8 @@ footer .legal{max-width:60em}
   .burger{display:block}
   .hero .wrap,.prices-wrap,.split,.contacts{grid-template-columns:1fr}
   .cards{grid-template-columns:1fr 1fr}
+  .where{grid-template-columns:1fr 1fr}
+  .where .map{grid-column:1/-1;min-height:280px}
 }
 @media (max-width:720px){
   section{padding-block:48px}
@@ -348,17 +358,11 @@ footer .legal{max-width:60em}
         <p class="hint">Узнайте, сколько получите за ваше золото</p>
         <div class="field">
           <span>Проба</span>
-          <div class="seg" role="radiogroup" aria-label="Проба">
+          <div class="seg four" role="radiogroup" aria-label="Проба">
+            <input type="radio" name="probe" id="p375" value="375"><label for="p375">375</label>
             <input type="radio" name="probe" id="p585" value="585" checked><label for="p585">585</label>
             <input type="radio" name="probe" id="p750" value="750"><label for="p750">750</label>
             <input type="radio" name="probe" id="p999" value="999"><label for="p999">999</label>
-          </div>
-        </div>
-        <div class="field">
-          <span>Что сдаёте</span>
-          <div class="seg two" id="kind-seg" role="radiogroup" aria-label="Изделие или лом">
-            <input type="radio" name="kind" id="k-izd" value="изд" checked><label for="k-izd">Изделие</label>
-            <input type="radio" name="kind" id="k-lom" value="лом"><label for="k-lom">Лом</label>
           </div>
         </div>
         <label class="field" for="w">
@@ -386,11 +390,10 @@ footer .legal{max-width:60em}
           <table>
             <thead><tr><th>Проба</th><th>Цена за 1 г</th></tr></thead>
             <tbody id="ptable">
-              <tr><td><span class="probe-tag">585</span>Изделие</td><td class="p">31 000 ₸</td></tr>
-              <tr><td><span class="probe-tag">585</span>Лом</td><td class="p">29 000 ₸</td></tr>
-              <tr><td><span class="probe-tag">750</span>Изделие</td><td class="p">39 100 ₸</td></tr>
-              <tr><td><span class="probe-tag">750</span>Лом</td><td class="p">37 100 ₸</td></tr>
-              <tr><td><span class="probe-tag">999</span>Слитки и лом</td><td class="p">49 500 ₸</td></tr>
+              <tr><td><span class="probe-tag">999</span>проба</td><td class="p">49 500 ₸</td></tr>
+              <tr><td><span class="probe-tag">750</span>проба</td><td class="p">37 100 ₸</td></tr>
+              <tr><td><span class="probe-tag">585</span>проба</td><td class="p">29 000 ₸</td></tr>
+              <tr><td><span class="probe-tag">375</span>проба</td><td class="p">18 500 ₸</td></tr>
             </tbody>
           </table>
           <p class="pdate" id="price-date">Цены на 02.11.2026. Точную сумму назовём после оценки при вас.</p>
@@ -475,6 +478,7 @@ footer .legal{max-width:60em}
             <li><div><b>Называем сумму</b><span>Решение остаётся за вами, без давления.</span></div></li>
             <li><div><b>Деньги сразу</b><span>Наличными или переводом на карту.</span></div></li>
           </ol>
+          <iframe class="map" src="https://maps.google.com/maps?q=43.227246,76.905896&hl=ru&z=17&output=embed" title="Карта: ул. Ауэзова, 136, Алматы" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           <a class="btn btn-gold" href="https://2gis.kz/almaty/firm/70000001118349052" target="_blank" rel="noopener">Построить маршрут в 2ГИС</a>
         </div>
       </div>
@@ -555,6 +559,11 @@ footer .legal{max-width:60em}
           <a class="btn btn-line" href="https://t.me/scypka_zolota" target="_blank" rel="noopener">Telegram</a>
         </div>
       </div>
+      <div class="where">
+        <figure><img src="fasad.webp" width="440" height="551" loading="lazy" alt="Фасад здания на ул. Ауэзова, 136 с вывеской «Алтын сату — Скупка золота»"><figcaption><b>Ищите вывеску «Скупка золота»</b>Над входом в Leilaq Beauty Center, дом 136</figcaption></figure>
+        <figure><img src="vnutri.webp" width="360" height="609" loading="lazy" alt="Окно оценки золота внутри скупки"><figcaption><b>Окно оценки</b>Взвешиваем и проверяем пробу при вас</figcaption></figure>
+        <iframe class="map" src="https://maps.google.com/maps?q=43.227246,76.905896&hl=ru&z=17&output=embed" title="Карта: ул. Ауэзова, 136, Алматы" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
     </div>
   </section>
 </main>
@@ -589,40 +598,37 @@ footer .legal{max-width:60em}
 /* Цены и калькулятор */
 (function(){
   var SHEET='https://docs.google.com/spreadsheets/d/e/2PACX-1vQpdJHfU33nDp6OAZuPI79jzwnQ2v9_IxktRNEzVolOvaIo4pFCcafwkZtsri5AYVqDQpn0j8POXmG9/pub?gid=1813527192&single=true&output=csv';
-  var P={"date": "02.11.2026", "585 изд": 31000, "585 лом": 29000, "750 изд": 39100, "750 лом": 37100, "999": 49500};
-  var ROWS=[['585','изд','Изделие'],['585','лом','Лом'],['750','изд','Изделие'],['750','лом','Лом'],['999','','Слитки и лом']];
-  function key(pr,k){return pr==='999'?'999':pr+' '+k}
+  var P={date:'02.11.2026','999':49500,'750':37100,'585':29000};
+  var ORDER=['999','750','585','375'];
+  function fill(p){if(!p['375']&&p['585'])p['375']=Math.floor(p['585']*375/585/100)*100;return p}
   function money(n){return Math.floor(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ')+' ₸'}
   function ddmm(s){return String(s).trim().replace(/^(\d)\./,'0$1.')}
   function stale(s){var m=String(s).trim().match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/);return !!m&&Date.now()-new Date(+m[3],+m[2]-1,+m[1]).getTime()>2*864e5}
   function renderTable(){
-    document.getElementById('ptable').innerHTML=ROWS.map(function(r){var v=P[key(r[0],r[1])];return '<tr><td><span class="probe-tag">'+r[0]+'</span>'+r[2]+'</td><td class="p">'+(v?money(v):'—')+'</td></tr>'}).join('');
+    document.getElementById('ptable').innerHTML=ORDER.map(function(pr){var v=P[pr];return '<tr><td><span class="probe-tag">'+pr+'</span>проба</td><td class="p">'+(v?money(v):'—')+'</td></tr>'}).join('');
     document.getElementById('price-date').textContent='Цены на '+ddmm(P.date)+'. '+(stale(P.date)?'Цена меняется каждый день, актуальную уточните в WhatsApp. ':'')+'Точную сумму назовём после оценки при вас.';
     document.getElementById('calc-date').textContent='Расчёт по ценам на '+ddmm(P.date)+'. Точную сумму назовём после оценки при вас.';
   }
-  var form=document.getElementById('calc'),w=document.getElementById('w'),seg=document.getElementById('kind-seg');
+  var form=document.getElementById('calc'),w=document.getElementById('w');
   function calc(){
-    var pr=form.probe.value,k=form.kind.value;seg.classList.toggle('off',pr==='999');
-    var rate=P[key(pr,k)]||0,g=parseFloat(String(w.value).replace(',','.').replace(/[^0-9.]/g,''))||0;
-    var sum=rate*g;
+    var pr=form.probe.value,rate=P[pr]||0,g=parseFloat(String(w.value).replace(',','.').replace(/[^0-9.]/g,''))||0,sum=rate*g;
     document.getElementById('sum').textContent=money(sum);
     document.getElementById('rate-v').textContent=rate?money(rate):'—';
-    var kind=pr==='999'?'':(k==='лом'?', лом':', изделие');
-    var t='Здравствуйте! Хочу сдать золото: '+pr+' проба'+kind+(g?', '+String(w.value).trim()+' г. По калькулятору '+money(sum):'')+'. Когда можно подойти?';
+    var t='Здравствуйте! Хочу сдать золото: '+pr+' проба'+(g?', '+String(w.value).trim()+' г. По калькулятору '+money(sum):'')+'. Когда можно подойти?';
     document.getElementById('calc-wa').href='https://wa.me/77052425456?text='+encodeURIComponent(t);
   }
   form.addEventListener('input',calc);form.addEventListener('change',calc);
   form.addEventListener('submit',function(e){e.preventDefault()});
-  renderTable();calc();
+  fill(P);renderTable();calc();
   function parse(t){return t.trim().split(/\r?\n/).map(function(l){var o=[],c='',q=false;for(var i=0;i<l.length;i++){var ch=l[i];if(q){if(ch=='"'&&l[i+1]=='"'){c+='"';i++}else if(ch=='"'){q=false}else{c+=ch}}else if(ch=='"'){q=true}else if(ch==','){o.push(c);c=''}else{c+=ch}}o.push(c);return o})}
   fetch(SHEET+'&t='+Date.now()).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){
     var rows=parse(t);if(rows.length<2)return;
     var last=null;for(var i=rows.length-1;i>0;i--){if(rows[i].slice(1).some(function(x){return /[0-9]/.test(x)})){last=rows[i];break}}
     if(!last)return;
     var np={date:last[0]},ok=false;
-    rows[0].forEach(function(h,i){if(!i)return;var p=String(h).trim().split(/\s+/),pr=p[0];if(!/^(585|750|999)$/.test(pr))return;
-      var k=pr==='999'?'999':pr+' '+(/^изд/i.test(p[1]||'')?'изд':'лом');var n=parseInt(String(last[i]).replace(/[^0-9]/g,''),10);if(n){np[k]=n;ok=true}});
-    if(ok){P=np;renderTable();calc()}
+    rows[0].forEach(function(h,i){if(!i)return;var p=String(h).trim().split(/\s+/),pr=p[0];if(!/^(375|585|750|999)$/.test(pr)||/^изд/i.test(p[1]||''))return;
+      var n=parseInt(String(last[i]).replace(/[^0-9]/g,''),10);if(n){np[pr]=n;ok=true}});
+    if(ok){P=fill(np);renderTable();calc()}
   }).catch(function(){});
 })();
 </script>
